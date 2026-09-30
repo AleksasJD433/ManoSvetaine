@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aleksas — Fotografija</title>
+  <style>
+    :root {
+      --bg: #f5f3ef;
+      --surface: #fff;
+      --text: #171717;
+      --muted: #6d6a65;
+      --line: #ddd9d2;
+      --accent: #171717;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+    .site {
+      min-height: 100vh;
+      background: var(--bg);
+    }
+    header {
+      max-width: 1180px;
+      margin: auto;
+      padding: 28px 28px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -.04em;
+    }
+    nav { display: flex; gap: 28px; }
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    nav a:hover { opacity: .55; }
+
+    .hero {
+      max-width: 1180px;
+      margin: auto;
+      padding: 100px 28px 110px;
+      display: grid;
+      grid-template-columns: 1.4fr .6fr;
+      gap: 60px;
+      align-items: end;
+    }
+    h1 {
+      font-size: clamp(56px, 9vw, 120px);
+      line-height: .88;
+      letter-spacing: -.075em;
+      margin: 0;
+      font-weight: 700;
+    }
+    .hero-copy {
+      max-width: 330px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+    .hero-copy p { margin: 0 0 24px; }
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 999px;
+      font-size: 14px;
+    }
+
+    section {
+      max-width: 1180px;
+      margin: auto;
+      padding: 40px 28px 110px;
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      margin-bottom: 32px;
+    }
+    .section-head h2 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -.02em;
+    }
+    .section-head span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .photo {
+      aspect-ratio: 4 / 5;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, #ddd 0%, #999 45%, #222 100%);
+      cursor: pointer;
+    }
+    .photo:nth-child(2) { background: linear-gradient(145deg, #eee, #aaa, #333); }
+    .photo:nth-child(3) { background: linear-gradient(35deg, #222, #777, #ddd); }
+    .photo:nth-child(4) { background: linear-gradient(160deg, #bbb, #444); }
+    .photo:nth-child(5) { background: linear-gradient(25deg, #111, #888, #ccc); }
+    .photo:nth-child(6) { background: linear-gradient(135deg, #ccc, #666, #111); }
+    .photo::after {
+      content: attr(data-title);
+      position: absolute;
+      left: 14px;
+      bottom: 12px;
+      color: white;
+      font-size: 13px;
+      opacity: 0;
+      transition: opacity .2s;
+    }
+    .photo:hover::after { opacity: 1; }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+    .about h3 {
+      font-size: 40px;
+      line-height: 1;
+      letter-spacing: -.05em;
+      margin: 0;
+    }
+    .about p {
+      margin: 0;
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      max-width: 1180px;
+      margin: auto;
+      padding: 24px 28px 40px;
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+      header { padding: 20px; }
+      nav { gap: 14px; }
+      .hero {
+        padding: 70px 20px 80px;
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+      section { padding: 30px 20px 75px; }
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+      .about { grid-template-columns: 1fr; gap: 30px; }
+      footer { margin: 0 20px; padding-left: 0; padding-right: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site">
+    <header>
+      <div class="logo">ALEKSAS / FOTO</div>
+      <nav>
+        <a href="#works">Darbai</a>
+        <a href="#about">Apie</a>
+        <a href="#contact">Kontaktai</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <h1>Šviesa.<br>Judėjimas.<br>Forma.</h1>
+        </div>
+        <div class="hero-copy">
+          <p>Fotografijos portfolio, orientuotas į judesį, žmogų ir atmosferą. Eksperimentuoju su natūralia šviesa, judesio fiksavimu ir fantastine fotografija.</p>
+          <a class="button" href="#works">Peržiūrėti darbus ↓</a>
+        </div>
+      </section>
+
+      <section id="works">
+        <div class="section-head">
+          <h2>Pasirinkti darbai</h2>
+          <span>01 — 06</span>
+        </div>
+        <div class="gallery">
+          <div class="photo" data-title="Motion / 01"></div>
+          <div class="photo" data-title="Portrait / 02"></div>
+          <div class="photo" data-title="Movement / 03"></div>
+          <div class="photo" data-title="Fantasy / 04"></div>
+          <div class="photo" data-title="Light / 05"></div>
+          <div class="photo" data-title="Cycling / 06"></div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="section-head">
+          <h2>Apie mane</h2>
+          <span>Vilnius, LT</span>
+        </div>
+        <div class="about">
+          <h3>Fotografuoju tai,<br>kas juda.</h3>
+          <p>Man įdomus momentas tarp sustingimo ir judesio. Mano darbuose susitinka sporto fotografija, portretas ir eksperimentiniai fotografijos metodai. Ši svetainė yra paprastas portfolio pagrindas, kurį galima lengvai papildyti tikromis nuotraukomis, projektais ir kontaktine informacija.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <span>© 2026 Aleksas</span>
+      <span>Vilnius · Lietuva</span>
+    </footer>
+  </div>
+</body>
+</html>
